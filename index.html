@@ -7,18 +7,17 @@
   <meta name="description" content="VEYRA: Ashes of the Glass Tide — an original browser action RPG vertical slice." />
   <title>VEYRA: Ashes of the Glass Tide</title>
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="babylon.js"></script>
-  <script defer src="game.js"></script>
+  <link rel="stylesheet" href="styles-v4.css" />
+  <script defer src="babylon-v4.js"></script>
+  <script defer src="game-v4.js"></script>
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister()})}).catch(function(){})}
+if('caches' in window){caches.keys().then(function(ks){ks.forEach(function(k){if(k.indexOf('veyra')===0)caches.delete(k)})}).catch(function(){})}
+</script>
 </head>
 <body>
+  <div id="loading" style="display:none"><i id="loadFill"></i><span id="loadText"></span></div>
   <canvas id="game" aria-label="3D game viewport"></canvas>
-
-  <div id="loading" class="screen visible">
-    <div class="sigil">◈</div>
-    <h1>VEYRA</h1><p>ASHES OF THE GLASS TIDE</p>
-    <div class="loadbar"><i id="loadFill"></i></div><small id="loadText">Waking the glass tide…</small>
-  </div>
 
   <section id="hud" class="hidden" aria-live="polite">
     <div class="hud-left">
